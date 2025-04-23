@@ -1,13 +1,14 @@
 
 package com.example.consumingwebservice;
 
-import com.example.consumingwebservice.wsdl.CountryWithToString;
+import com.example.consumingwebservice.proxy.StudentClient;
+import com.example.consumingwebservice.wsdl.GetAllStudentsResponse;
+import com.example.consumingwebservice.wsdl.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.consumingwebservice.wsdl.GetCountryResponse;
 
 @SpringBootApplication
 public class ConsumingWebServiceApplication {
@@ -17,24 +18,17 @@ public class ConsumingWebServiceApplication {
 	}
 
 	@Bean
-	CommandLineRunner lookup(CountryClient countryClient) {
+	CommandLineRunner run(StudentClient studentClient) {
 		return args -> {
-			String country = "Spain";
-
-			if (args.length > 0) {
-				country = args[0];
+			GetAllStudentsResponse response = studentClient.getAllStudents();
+			for (Student s : response.getStudent()) {
+				System.out.println("Student: " + s.getName() + ", ID: " + s.getId());
+				s.getCourses().forEach(c -> {
+					System.out.println("  - Course: " + c.getTitle());
+				});
 			}
-
-			CountryWithToString countryWithToString = new CountryWithToString();
-
-
-			GetCountryResponse response = countryClient.getCountry(country);
-			System.err.println("Currency " + response.getCountry().getCurrency());
-
-
-			System.err.println(countryWithToString);
-
 		};
 	}
-
 }
+
+

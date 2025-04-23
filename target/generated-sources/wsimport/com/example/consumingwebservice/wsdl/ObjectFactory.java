@@ -30,27 +30,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCountryRequest }
+     * Create an instance of {@link GetAllStudentsRequest }
      * 
      */
-    public GetCountryRequest createGetCountryRequest() {
-        return new GetCountryRequest();
+    public GetAllStudentsRequest createGetAllStudentsRequest() {
+        return new GetAllStudentsRequest();
     }
 
     /**
-     * Create an instance of {@link GetCountryResponse }
+     * Create an instance of {@link GetAllStudentsResponse }
      * 
      */
-    public GetCountryResponse createGetCountryResponse() {
-        return new GetCountryResponse();
+    public GetAllStudentsResponse createGetAllStudentsResponse() {
+        return new GetAllStudentsResponse();
     }
 
     /**
-     * Create an instance of {@link Country }
+     * Create an instance of {@link Student }
      * 
      */
-    public Country createCountry() {
-        return new Country();
+    public Student createStudent() {
+        return new Student();
+    }
+
+    /**
+     * Create an instance of {@link Course }
+     * 
+     */
+    public Course createCourse() {
+        return new Course();
     }
 
 }
