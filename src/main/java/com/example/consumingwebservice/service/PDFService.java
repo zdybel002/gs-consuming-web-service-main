@@ -54,10 +54,6 @@ public class PDFService {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer(new StreamSource(xsltInputStream));
 
-
-
-
-
         // Set up FOP for PDF output
         ByteArrayOutputStream pdfOutputStream = new ByteArrayOutputStream();
         Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, pdfOutputStream);
